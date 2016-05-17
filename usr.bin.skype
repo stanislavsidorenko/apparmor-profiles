@@ -1,0 +1,43 @@
+# Last Modified: Wed Nov 28 19:26:07 2007
+#include <tunables/global>
+/usr/bin/skype {
+  #include <abstractions/audio>
+  #include <abstractions/base>
+  #include <abstractions/fonts>
+  #include <abstractions/nameservice>
+  #include <abstractions/nvidia>
+  #include <abstractions/dbus>  
+  #include <abstractions/dbus-session>
+  #include <abstractions/fonts>
+  #include <abstractions/freedesktop.org>
+  #include <abstractions/gnome>
+  #include <abstractions/kde>    
+  #include <abstractions/private-files> 
+  #include <abstractions/private-files-strict>
+  #include <abstractions/user-tmp>          
+  #include <abstractions/video>        
+  #include <abstractions/ubuntu-browsers>        
+
+  
+
+  owner @{HOME}/.Skype/ rw,
+  owner @{HOME}/.Skype/** krw,  
+  
+  /usr/bin/skype mr,
+  /usr/share/skype/** r,
+  /usr/share/fonts/** m,
+  /usr/share/locale-langpack/** m,
+
+
+  /etc/xdg/Trolltech.conf rk,
+  /etc/xdg/sni-qt.conf r,
+  owner @{HOME}/.config/Trolltech.conf r,
+  owner @{HOME}/.cache/fontconfig/** k, 
+  
+
+  network,
+  owner /{run,dev}/shm/pulse-shm* m,  #<abstractions/audio> provides rwk only
+  /dev/ r,
+  /dev/video*  rw,
+
+}
